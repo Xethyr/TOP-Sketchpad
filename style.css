@@ -13,9 +13,7 @@ body {
 
 #container div {
     border: 1px solid black;
-    flex: 1;
-    height: 10%;
-    width: 10%;
+    flex: 1 0 auto;
     flex-basis: 6%;
 }
 
