@@ -1,13 +1,21 @@
 const containerDiv = document.getElementById('container');
 const newGridBtn = document.getElementById('prompt');
 
-for (let i = 0; i < 16 * 16; i++) {
-    const newDiv = containerDiv.appendChild(document.createElement('div'));
-    newDiv.className = 'grid-div'
+for (let i = 0; i < 16; i++) {
+    const columnDiv = containerDiv.appendChild(document.createElement('div'));
+    columnDiv.className = 'column';
+    for (let j = 0; j < 16; j++) {
+        const rowDiv = columnDiv.appendChild(document.createElement('div'));
+     rowDiv.className = 'row';
+    }
 }
 
+
+
 containerDiv.addEventListener('mouseover', (e) => {
-    e.target.style.backgroundColor = 'red';
+    if (e.target.className === 'row') {
+        e.target.style.backgroundColor = 'red';
+    }
 })
 
 function promptWindow() {
@@ -18,14 +26,14 @@ function promptWindow() {
         while (containerDiv.firstChild) {
             containerDiv.removeChild(containerDiv.firstChild);
         };
-        for (let i = 0; i < choice * choice; i++) {
-            const newDiv = containerDiv.appendChild(document.createElement('div'));
-            newDiv.className = 'grid-div'
-        };
-        const gridDivs = document.querySelectorAll('.grid-div');
-        gridDivs.forEach((div) => {
-            div.style.flexBasis = `${Math.floor(100 / choice)}%`;
-        })
+        for (let i = 0; i < choice; i++) {
+            const columnDiv = containerDiv.appendChild(document.createElement('div'));
+            columnDiv.className = 'column';
+            for (let j = 0; j < choice; j++) {
+                const rowDiv = columnDiv.appendChild(document.createElement('div'));
+             rowDiv.className = 'row';
+            }
+        }
     }
 }
 
